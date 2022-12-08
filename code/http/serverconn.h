@@ -19,6 +19,11 @@
 #include "httprequest.h"
 #include "httpresponse.h"
 
+enum PROTOCOL{
+    HTTP = 0,
+    RTSP = 1
+};
+
 class ServerConn {
 public:
     ServerConn();
@@ -54,11 +59,13 @@ public:
     static bool isET;
     static const char* srcDir;
     static std::atomic<int> userCount;
+    static std::map<std::string, PROTOCOL> g_protocolMatchTable;
     
 private:
    
     int fd_;
     struct  sockaddr_in addr_;
+    
 
     bool isClose_;
     
@@ -70,6 +77,7 @@ private:
 
     HttpRequest request_;
     HttpResponse response_;
+    PROTOCOL m_protocolType;
 };
 
 

@@ -10,6 +10,11 @@ const char* ServerConn::srcDir;
 std::atomic<int> ServerConn::userCount;
 bool ServerConn::isET;
 
+std::map<std::string, PROTOCOL> ServerConn::g_protocolMatchTable = {
+    {"HTTP", HTTP},
+    {"RTSP", RTSP}
+};
+
 ServerConn::ServerConn() { 
     fd_ = -1;
     addr_ = { 0 };
@@ -95,10 +100,12 @@ ssize_t ServerConn::write(int* saveErrno) {
 }
 
 bool ServerConn::process() {
+    if(readBuff_.ReadableBytes() <= 0) {
+        return false;
+    }
     //根据请求的类型，做不同的处理
     request_.Init();
     const char CRLF[] = "\r\n";
-
     //使用正则表达式，匹配协议类型，根据不同的协议处理处理不同的请求
     std::string pattern("HTTP|RTSP");
     smatch results;
@@ -106,16 +113,14 @@ bool ServerConn::process() {
 
     const char* lineEnd = search(readBuff_.Peek(), readBuff_.BeginWriteConst(), CRLF, CRLF + 2);
     std::string line(readBuff_.Peek(), lineEnd);
-    std::cout << "xinhong matching result:" << regex_search(line, results, r) << endl;
 
-    LOG_DEBUG("xinhong %s", results.str().c_str());
-
-
-    if(readBuff_.ReadableBytes() <= 0) {
-
-        return false;
+    if(regex_search(line, results, r))
+    {
+        m_protocolType = g_protocolMatchTable[results.str()];
+        LOG_DEBUG("m_protocolType:%d", m_protocolType);
     }
-    else if(request_.parse(readBuff_)) {
+
+    if(request_.parse(readBuff_)) {
         LOG_DEBUG("%s", request_.path().c_str());
         response_.Init(srcDir, request_.path(), request_.IsKeepAlive(), 200);
     } else {
