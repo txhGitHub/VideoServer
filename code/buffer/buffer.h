@@ -40,6 +40,8 @@ public:
     void Append(const void* data, size_t len);
     void Append(const Buffer& buff);
 
+    
+
     ssize_t ReadFd(int fd, int* Errno);
     ssize_t WriteFd(int fd, int* Errno);
 

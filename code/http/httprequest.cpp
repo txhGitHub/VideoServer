@@ -29,13 +29,12 @@ bool HttpRequest::IsKeepAlive() const {
 
 bool HttpRequest::parse(Buffer& buff) {
     const char CRLF[] = "\r\n";
-  
     if(buff.ReadableBytes() <= 0) {
         return false;
     }
-
-    const char* lineEnd = search(buff.Peek(), buff.BeginWriteConst(), CRLF, CRLF + 2);
+   
     while(buff.ReadableBytes() && state_ != FINISH) {
+        const char* lineEnd = search(buff.Peek(), buff.BeginWriteConst(), CRLF, CRLF + 2);
         std::string line(buff.Peek(), lineEnd);
         switch(state_)
         {
@@ -57,6 +56,7 @@ bool HttpRequest::parse(Buffer& buff) {
         default:
             break;
         }
+        //移动buffer的可读的位置，以便读取下一行数据
         if(lineEnd == buff.BeginWrite()) { break; }
         buff.RetrieveUntil(lineEnd + 2);
     }

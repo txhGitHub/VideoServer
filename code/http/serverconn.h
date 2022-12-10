@@ -18,6 +18,8 @@
 #include "../buffer/buffer.h"
 #include "httprequest.h"
 #include "httpresponse.h"
+#include "../rtsp/rtsprequest.h"
+#include "../timer/codetimer.h"
 
 enum PROTOCOL{
     HTTP = 0,
@@ -47,6 +49,8 @@ public:
     sockaddr_in GetAddr() const;
     
     bool process();
+    bool processHttpRequest();
+    bool processRtspRequest(std::string line);
 
     int ToWriteBytes() { 
         return iov_[0].iov_len + iov_[1].iov_len; 
@@ -55,6 +59,10 @@ public:
     bool IsKeepAlive() const {
         return request_.IsKeepAlive();
     }
+
+    void matchProtocol();
+
+    
 
     static bool isET;
     static const char* srcDir;
@@ -78,6 +86,7 @@ private:
     HttpRequest request_;
     HttpResponse response_;
     PROTOCOL m_protocolType;
+    RtspRequest m_rtspRequest;
 };
 
 

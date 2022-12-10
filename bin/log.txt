@@ -1,618 +1,141 @@
 g++ -std=c++14 -O2 -Wall -g  ../code/log/*.cpp ../code/pool/*.cpp ../code/timer/*.cpp ../code/http/*.cpp ../code/server/*.cpp ../code/rtsp/*.cpp ../code/buffer/*.cpp ../code/main.cpp -o ../bin/server  -pthread -lmysqlclient
-2022-12-08 15:11:14.624851 [info] : ========== Server init ==========
+2022-12-10 14:45:04.424316 [info] : ========== Server init ==========
 
-2022-12-08 15:11:14.624863 [info] : Port:1316, OpenLinger: false
+2022-12-10 14:45:04.424329 [info] : Port:1316, OpenLinger: false
 
-2022-12-08 15:11:14.624865 [info] : Listen Mode: ET, OpenConn Mode: ET
+2022-12-10 14:45:04.424331 [info] : Listen Mode: ET, OpenConn Mode: ET
 
-2022-12-08 15:11:14.624867 [info] : LogSys level: 0
+2022-12-10 14:45:04.424332 [info] : LogSys level: 0
 
-2022-12-08 15:11:14.624868 [info] : srcDir: /home/sinhung/rtsp_test/bin/resources/
+2022-12-10 14:45:04.424333 [info] : srcDir: /home/sinhung/rtsp_test/bin/resources/
 
-2022-12-08 15:11:14.624869 [info] : SqlConnPool num: 12, ThreadPool num: 6
+2022-12-10 14:45:04.424335 [info] : SqlConnPool num: 12, ThreadPool num: 6
 
-2022-12-08 15:11:14.624870 [info] : ========== Server start ==========
+2022-12-10 14:45:04.424336 [info] : ========== Server start ==========
 
-2022-12-08 15:11:23.946024 [info] : Client[6](192.168.31.237:29678) in, userCount:1
+2022-12-10 14:45:06.686362 [info] : Client[6](192.168.31.237:31170) in, userCount:1
 
-2022-12-08 15:11:23.946256 [info] : Client[6] in!
+2022-12-10 14:45:06.686583 [info] : Client[6] in!
 
-xinhong matching result:1
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-2022-12-08 15:11:23.946425 [debug]: xinhong GET / HTTP/1.1
+2022-12-10 14:45:06.697495 [debug]: m_protocolType:1
 
-2022-12-08 15:11:23.946518 [debug]: xinhong Host: 192.168.31.138:1316
+2022-12-10 14:45:06.697539 [debug]: xinhong  OPTIONS rtsp://192.168.31.138:1316/test.h264 RTSP/1.0
 
-2022-12-08 15:11:23.946546 [debug]: xinhong User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36
+2022-12-10 14:45:06.697729 [debug]:  xinhong results  
 
-2022-12-08 15:11:23.946575 [debug]: xinhong Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+2022-12-10 14:45:06.697732 [debug]: parse OPTIONS cmd
 
-2022-12-08 15:11:23.946601 [debug]: xinhong Accept-Encoding: gzip, deflate
+2022-12-10 14:45:06.697733 [debug]: xinhong  CSeq: 2
 
-2022-12-08 15:11:23.946625 [debug]: xinhong Accept-Language: zh-CN,zh;q=0.9
+2022-12-10 14:45:06.697898 [debug]: parse OPTIONS cmd
 
-2022-12-08 15:11:23.946649 [debug]: xinhong Cache-Control: max-age=0
+2022-12-10 14:45:06.697899 [debug]: xinhong  User-Agent: LibVLC/3.0.17.4 (LIVE555 Streaming Media v2016.11.28)
 
-2022-12-08 15:11:23.946675 [debug]: xinhong Upgrade-Insecure-Requests: 1
+2022-12-10 14:45:06.698066 [debug]:  xinhong results 1
 
-2022-12-08 15:11:23.946698 [debug]: xinhong 
+2022-12-10 14:45:06.698068 [debug]: parse OPTIONS cmd
 
-2022-12-08 15:11:23.946720 [debug]: [GET], [/index.html], [1.1]
+2022-12-10 14:45:06.698069 [debug]: xinhong  
 
-2022-12-08 15:11:23.946721 [debug]: /index.html
+2022-12-10 14:45:06.698241 [debug]: parse OPTIONS cmd
 
-2022-12-08 15:11:23.946740 [debug]: file path /home/sinhung/rtsp_test/bin/resources//index.html
+2022-12-10 14:45:06.698323 [info] : Client[6] quit!
 
-2022-12-08 15:11:23.946747 [debug]: filesize:3148, 2  to 3233
+2022-12-10 14:45:06.698541 [info] : Client[6](192.168.31.237:31170) quit, UserCount:0
 
-2022-12-08 15:11:23.946992 [info] : Client[6] quit!
+2022-12-10 14:45:06.698817 [info] : Client[6](192.168.31.237:31426) in, userCount:1
 
-2022-12-08 15:11:23.947122 [info] : Client[6](192.168.31.237:29678) quit, UserCount:0
+2022-12-10 14:45:06.698870 [info] : Client[6] in!
 
-2022-12-08 15:11:23.955109 [info] : Client[6](192.168.31.237:29934) in, userCount:1
+2022-12-10 14:45:06.708963 [debug]: m_protocolType:1
 
-2022-12-08 15:11:23.955235 [info] : Client[6] in!
+2022-12-10 14:45:06.709016 [debug]: parse DESCRIBE cmd
 
-xinhong matching result:1
-2022-12-08 15:11:23.955637 [debug]: xinhong GET /css/bootstrap.min.css HTTP/1.1
+2022-12-10 14:45:06.709020 [debug]: parse DESCRIBE cmd
 
-xinhong matching result:0
-2022-12-08 15:11:23.955794 [debug]: xinhong Host: 192.168.31.138:1316
+2022-12-10 14:45:06.709022 [debug]: parse DESCRIBE cmd
 
-xinhong matching result:0
-2022-12-08 15:11:23.955836 [debug]: xinhong User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36
+2022-12-10 14:45:06.709023 [debug]: parse DESCRIBE cmd
 
-xinhong matching result:0
-2022-12-08 15:11:23.955984 [debug]: xinhong Accept: text/css,*/*;q=0.1
+2022-12-10 14:45:06.709025 [debug]: parse DESCRIBE cmd
 
-xinhong matching result:0
-2022-12-08 15:11:23.956018 [debug]: xinhong Accept-Encoding: gzip, deflate
+2022-12-10 14:45:06.709079 [info] : Client[6] quit!
 
-xinhong matching result:0
-2022-12-08 15:11:23.956062 [debug]: xinhong Accept-Language: zh-CN,zh;q=0.9
+2022-12-10 14:45:06.709202 [info] : Client[6](192.168.31.237:31426) quit, UserCount:0
 
-xinhong matching result:0
-2022-12-08 15:11:23.956105 [debug]: xinhong Referer: http://192.168.31.138:1316/
+2022-12-10 14:45:06.710093 [info] : Client[6](192.168.31.237:31682) in, userCount:1
 
-xinhong matching result:0
-2022-12-08 15:11:23.956190 [debug]: xinhong 
+2022-12-10 14:45:06.710120 [info] : Client[6] in!
 
-2022-12-08 15:11:23.956219 [debug]: [GET], [/css/bootstrap.min.css], [1.1]
+2022-12-10 14:45:06.711423 [debug]: m_protocolType:1
 
-2022-12-08 15:11:23.956236 [debug]: /css/bootstrap.min.css
+2022-12-10 14:45:06.711526 [debug]: parse SETUP cmd
 
-2022-12-08 15:11:23.956251 [debug]: file path /home/sinhung/rtsp_test/bin/resources//css/bootstrap.min.css
+2022-12-10 14:45:06.711545 [debug]: parse SETUP cmd
 
-2022-12-08 15:11:23.956274 [debug]: filesize:121260, 2  to 121347
+2022-12-10 14:45:06.711548 [debug]: parse SETUP cmd
 
-2022-12-08 15:11:23.957373 [info] : Client[7](192.168.31.237:31726) in, userCount:2
+2022-12-10 14:45:06.711549 [debug]: parse SETUP cmd
 
-2022-12-08 15:11:23.957385 [info] : Client[7] in!
+2022-12-10 14:45:06.711581 [info] : Client[6] quit!
 
-2022-12-08 15:11:23.957392 [info] : Client[8](192.168.31.237:32238) in, userCount:3
+2022-12-10 14:45:06.711664 [info] : Client[6](192.168.31.237:31682) quit, UserCount:0
 
-2022-12-08 15:11:23.957395 [info] : Client[8] in!
+2022-12-10 14:45:06.712162 [info] : Client[6](192.168.31.237:31938) in, userCount:1
 
-2022-12-08 15:11:23.957398 [info] : Client[9](192.168.31.237:32494) in, userCount:4
+2022-12-10 14:45:06.712285 [info] : Client[6] in!
 
-2022-12-08 15:11:23.957400 [info] : Client[9] in!
+2022-12-10 14:45:06.712452 [debug]: m_protocolType:1
 
-2022-12-08 15:11:23.957408 [info] : Client[10](192.168.31.237:32750) in, userCount:5
+2022-12-10 14:45:06.712484 [debug]: xinhong  OPTIONS rtsp://192.168.31.138:1316 RTSP/1.0
 
-2022-12-08 15:11:23.957422 [info] : Client[10] in!
+2022-12-10 14:45:06.712675 [debug]:  xinhong results 0$
 
-2022-12-08 15:11:23.957427 [info] : Client[11](192.168.31.237:33006) in, userCount:6
+2022-12-10 14:45:06.712679 [debug]: parse OPTIONS cmd
 
-2022-12-08 15:11:23.957429 [info] : Client[11] in!
+2022-12-10 14:45:06.712680 [debug]: xinhong  CSeq: 1
 
-xinhong matching result:1
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:1
-2022-12-08 15:11:23.957542 [debug]: xinhong GET /css/animate.css HTTP/1.1
+2022-12-10 14:45:06.712843 [debug]: parse OPTIONS cmd
 
-2022-12-08 15:11:23.957634 [debug]: xinhong Host: 192.168.31.138:1316
+2022-12-10 14:45:06.712844 [debug]: xinhong  User-Agent: RealMedia Player Version 6.0.9.1235 (linux-2.0-libc6-i386-gcc2.95)
 
-2022-12-08 15:11:23.957663 [debug]: xinhong User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36
+2022-12-10 14:45:06.713011 [debug]:  xinhong results p#
 
-2022-12-08 15:11:23.957698 [debug]: xinhong Accept: text/css,*/*;q=0.1
+2022-12-10 14:45:06.713013 [debug]: parse OPTIONS cmd
 
-2022-12-08 15:11:23.957798 [debug]: xinhong Accept-Encoding: gzip, deflate
+2022-12-10 14:45:06.713014 [debug]: xinhong  ClientChallenge: 9e26d33f2984236010ef6253fb1887f7
 
-2022-12-08 15:11:23.957838 [debug]: xinhong Accept-Language: zh-CN,zh;q=0.9
+2022-12-10 14:45:06.713190 [debug]: parse OPTIONS cmd
 
-2022-12-08 15:11:23.957863 [debug]: xinhong Referer: http://192.168.31.138:1316/
+2022-12-10 14:45:06.713191 [debug]: xinhong  PlayerStarttime: [28/03/2003:22:50:23 00:00]
 
-2022-12-08 15:11:23.957887 [debug]: xinhong 
+2022-12-10 14:45:06.713367 [debug]: parse OPTIONS cmd
 
-2022-12-08 15:11:23.957908 [debug]: [GET], [/css/animate.css], [1.1]
+2022-12-10 14:45:06.713369 [debug]: xinhong  CompanyID: KnKV4M4I/B2FjJ1TToLycw==
 
-2022-12-08 15:11:23.957909 [debug]: /css/animate.css
+2022-12-10 14:45:06.713535 [debug]: parse OPTIONS cmd
 
-2022-12-08 15:11:23.957917 [debug]: file path /home/sinhung/rtsp_test/bin/resources//css/animate.css
+2022-12-10 14:45:06.713536 [debug]: xinhong  GUID: 00000000-0000-0000-0000-000000000000
 
-2022-12-08 15:11:23.957939 [debug]: filesize:72922, 2  to 73008
+2022-12-10 14:45:06.713701 [debug]: parse OPTIONS cmd
 
-2022-12-08 15:11:23.957955 [debug]: xinhong GET /css/magnific-popup.css HTTP/1.1
+2022-12-10 14:45:06.713702 [debug]: xinhong  RegionData: 0
 
-xinhong matching result:0
-2022-12-08 15:11:23.958174 [debug]: xinhong Host: 192.168.31.138:1316
+2022-12-10 14:45:06.713865 [debug]: parse OPTIONS cmd
 
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:1
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-2022-12-08 15:11:23.958246 [debug]: xinhong User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36
+2022-12-10 14:45:06.713866 [debug]: xinhong  ClientID: Linux_2.4_6.0.9.1235_play32_RN01_EN_586
 
-2022-12-08 15:11:23.958278 [debug]: xinhong Accept: text/css,*/*;q=0.1
+2022-12-10 14:45:06.714030 [debug]:  xinhong results 0$
 
-2022-12-08 15:11:23.958302 [debug]: xinhong Accept-Encoding: gzip, deflate
+2022-12-10 14:45:06.714031 [debug]: parse OPTIONS cmd
 
-2022-12-08 15:11:23.958334 [debug]: xinhong Accept-Language: zh-CN,zh;q=0.9
+2022-12-10 14:45:06.714032 [debug]: xinhong  
 
-2022-12-08 15:11:23.958361 [debug]: xinhong Referer: http://192.168.31.138:1316/
+2022-12-10 14:45:06.714192 [debug]: parse OPTIONS cmd
 
-2022-12-08 15:11:23.958385 [debug]: xinhong 
+2022-12-10 14:45:06.714727 [info] : Client[6] quit!
 
-2022-12-08 15:11:23.958407 [debug]: [GET], [/css/magnific-popup.css], [1.1]
+2022-12-10 14:45:06.715014 [info] : Client[6](192.168.31.237:31938) quit, UserCount:0
 
-2022-12-08 15:11:23.958408 [debug]: /css/magnific-popup.css
-
-2022-12-08 15:11:23.958415 [debug]: file path /home/sinhung/rtsp_test/bin/resources//css/magnific-popup.css
-
-2022-12-08 15:11:23.958423 [debug]: filesize:6951, 2  to 7036
-
-2022-12-08 15:11:23.958442 [debug]: xinhong GET /css/font-awesome.min.css HTTP/1.1
-
-2022-12-08 15:11:23.958517 [debug]: xinhong Host: 192.168.31.138:1316
-
-2022-12-08 15:11:23.958575 [debug]: xinhong User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36
-
-2022-12-08 15:11:23.958601 [debug]: xinhong Accept: text/css,*/*;q=0.1
-
-2022-12-08 15:11:23.958631 [debug]: xinhong Accept-Encoding: gzip, deflate
-
-2022-12-08 15:11:23.958656 [debug]: xinhong Accept-Language: zh-CN,zh;q=0.9
-
-2022-12-08 15:11:23.958688 [debug]: xinhong Referer: http://192.168.31.138:1316/
-
-2022-12-08 15:11:23.958713 [debug]: xinhong 
-
-2022-12-08 15:11:23.958737 [debug]: [GET], [/css/font-awesome.min.css], [1.1]
-
-2022-12-08 15:11:23.958739 [debug]: /css/font-awesome.min.css
-
-2022-12-08 15:11:23.958745 [debug]: file path /home/sinhung/rtsp_test/bin/resources//css/font-awesome.min.css
-
-2022-12-08 15:11:23.958752 [debug]: filesize:27392, 2  to 27478
-
-xinhong matching result:1
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:1
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-2022-12-08 15:11:23.958897 [debug]: xinhong GET /js/jquery.js HTTP/1.1
-
-2022-12-08 15:11:23.958994 [debug]: xinhong Host: 192.168.31.138:1316
-
-2022-12-08 15:11:23.959022 [debug]: xinhong User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36
-
-2022-12-08 15:11:23.959048 [debug]: xinhong Accept: */*
-
-2022-12-08 15:11:23.959071 [debug]: xinhong Accept-Encoding: gzip, deflate
-
-2022-12-08 15:11:23.959104 [debug]: xinhong Accept-Language: zh-CN,zh;q=0.9
-
-2022-12-08 15:11:23.959144 [debug]: xinhong Referer: http://192.168.31.138:1316/
-
-2022-12-08 15:11:23.959182 [debug]: xinhong 
-
-2022-12-08 15:11:23.959212 [debug]: [GET], [/js/jquery.js], [1.1]
-
-2022-12-08 15:11:23.959224 [debug]: /js/jquery.js
-
-2022-12-08 15:11:23.959233 [debug]: file path /home/sinhung/rtsp_test/bin/resources//js/jquery.js
-
-2022-12-08 15:11:23.959253 [debug]: filesize:85658, 2  to 85751
-
-2022-12-08 15:11:23.959324 [debug]: xinhong GET /css/style.css HTTP/1.1
-
-2022-12-08 15:11:23.959409 [info] : Client[6] quit!
-
-2022-12-08 15:11:23.959504 [debug]: xinhong Host: 192.168.31.138:1316
-
-2022-12-08 15:11:23.959537 [debug]: xinhong User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36
-
-2022-12-08 15:11:23.959564 [debug]: xinhong Accept: text/css,*/*;q=0.1
-
-2022-12-08 15:11:23.959588 [debug]: xinhong Accept-Encoding: gzip, deflate
-
-2022-12-08 15:11:23.959603 [info] : Client[6](192.168.31.237:29934) quit, UserCount:5
-
-2022-12-08 15:11:23.959612 [debug]: xinhong Accept-Language: zh-CN,zh;q=0.9
-
-2022-12-08 15:11:23.959636 [debug]: xinhong Referer: http://192.168.31.138:1316/
-
-2022-12-08 15:11:23.959660 [debug]: xinhong 
-
-2022-12-08 15:11:23.959682 [debug]: [GET], [/css/style.css], [1.1]
-
-2022-12-08 15:11:23.959683 [debug]: /css/style.css
-
-2022-12-08 15:11:23.959690 [debug]: file path /home/sinhung/rtsp_test/bin/resources//css/style.css
-
-2022-12-08 15:11:23.959697 [debug]: filesize:9807, 2  to 9892
-
-2022-12-08 15:11:23.959713 [info] : Client[8] quit!
-
-2022-12-08 15:11:23.959789 [info] : Client[8](192.168.31.237:32238) quit, UserCount:4
-
-2022-12-08 15:11:23.959805 [info] : Client[9] quit!
-
-2022-12-08 15:11:23.959962 [info] : Client[9](192.168.31.237:32494) quit, UserCount:3
-
-2022-12-08 15:11:23.960191 [info] : Client[10] quit!
-
-2022-12-08 15:11:23.960525 [info] : Client[10](192.168.31.237:32750) quit, UserCount:2
-
-2022-12-08 15:11:23.960575 [info] : Client[11] quit!
-
-2022-12-08 15:11:23.961347 [info] : Client[11](192.168.31.237:33006) quit, UserCount:1
-
-2022-12-08 15:11:23.962335 [info] : Client[6](192.168.31.237:33518) in, userCount:2
-
-2022-12-08 15:11:23.962365 [info] : Client[6] in!
-
-xinhong matching result:1
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-2022-12-08 15:11:23.963096 [debug]: xinhong GET /js/bootstrap.min.js HTTP/1.1
-
-2022-12-08 15:11:23.963171 [debug]: xinhong Host: 192.168.31.138:1316
-
-2022-12-08 15:11:23.963199 [debug]: xinhong User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36
-
-2022-12-08 15:11:23.963226 [debug]: xinhong Accept: */*
-
-2022-12-08 15:11:23.963258 [debug]: xinhong Accept-Encoding: gzip, deflate
-
-2022-12-08 15:11:23.963283 [debug]: xinhong Accept-Language: zh-CN,zh;q=0.9
-
-2022-12-08 15:11:23.963307 [debug]: xinhong Referer: http://192.168.31.138:1316/
-
-2022-12-08 15:11:23.963331 [debug]: xinhong 
-
-2022-12-08 15:11:23.963353 [debug]: [GET], [/js/bootstrap.min.js], [1.1]
-
-2022-12-08 15:11:23.963354 [debug]: /js/bootstrap.min.js
-
-2022-12-08 15:11:23.963362 [debug]: file path /home/sinhung/rtsp_test/bin/resources//js/bootstrap.min.js
-
-2022-12-08 15:11:23.963372 [debug]: filesize:36868, 2  to 36961
-
-2022-12-08 15:11:23.963426 [info] : Client[6] quit!
-
-2022-12-08 15:11:23.963497 [info] : Client[6](192.168.31.237:33518) quit, UserCount:1
-
-2022-12-08 15:11:23.965277 [info] : Client[6](192.168.31.237:34542) in, userCount:2
-
-2022-12-08 15:11:23.965481 [info] : Client[6] in!
-
-2022-12-08 15:11:23.965545 [info] : Client[8](192.168.31.237:34286) in, userCount:3
-
-2022-12-08 15:11:23.965578 [info] : Client[8] in!
-
-xinhong matching result:1
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-2022-12-08 15:11:23.965721 [debug]: xinhong GET /js/jquery.magnific-popup.min.js HTTP/1.1
-
-2022-12-08 15:11:23.965854 [debug]: xinhong Host: 192.168.31.138:1316
-
-2022-12-08 15:11:23.965928 [debug]: xinhong User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36
-
-2022-12-08 15:11:23.966057 [debug]: xinhong Accept: */*
-
-xinhong matching result:1
-xinhong matching result:0
-2022-12-08 15:11:23.966214 [debug]: xinhong GET /js/smoothscroll.js HTTP/1.1
-
-2022-12-08 15:11:23.966393 [debug]: xinhong Host: 192.168.31.138:1316
-
-xinhong matching result:0
-xinhong matching result:0
-2022-12-08 15:11:23.966637 [debug]: xinhong Accept-Encoding: gzip, deflate
-
-2022-12-08 15:11:23.967083 [info] : Client[9](192.168.31.237:35310) in, userCount:4
-
-2022-12-08 15:11:23.967106 [info] : Client[9] in!
-
-2022-12-08 15:11:23.967123 [info] : Client[10](192.168.31.237:35566) in, userCount:5
-
-2022-12-08 15:11:23.967127 [info] : Client[10] in!
-
-xinhong matching result:1
-xinhong matching result:1
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-2022-12-08 15:11:23.967223 [info] : Client[7] quit!
-
-2022-12-08 15:11:23.967416 [debug]: xinhong GET /js/wow.min.js HTTP/1.1
-
-2022-12-08 15:11:23.967572 [debug]: xinhong Host: 192.168.31.138:1316
-
-2022-12-08 15:11:23.967613 [info] : Client[7](192.168.31.237:31726) quit, UserCount:4
-
-xinhong matching result:2022-12-08 15:11:23.967655 [debug]: xinhong User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36
-
-xinhong matching result:0
-0
-2022-12-08 15:11:23.967729 [debug]: xinhong Accept-Language: zh-CN,zh;q=0.9
-
-2022-12-08 15:11:23.967755 [debug]: xinhong Accept: */*
-
-2022-12-08 15:11:23.967802 [debug]: xinhong Accept-Encoding: gzip, deflate
-
-2022-12-08 15:11:23.967829 [debug]: xinhong Accept-Language: zh-CN,zh;q=0.9
-
-2022-12-08 15:11:23.967891 [debug]: xinhong Referer: http://192.168.31.138:1316/
-
-2022-12-08 15:11:23.967947 [debug]: xinhong 
-
-2022-12-08 15:11:23.968045 [debug]: [GET], [/js/wow.min.js], [1.1]
-
-2022-12-08 15:11:23.968053 [debug]: /js/wow.min.js
-
-2022-12-08 15:11:23.968078 [debug]: file path /home/sinhung/rtsp_test/bin/resources//js/wow.min.js
-
-2022-12-08 15:11:23.968101 [debug]: filesize:7082, 2  to 7174
-
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-2022-12-08 15:11:23.967225 [debug]: xinhong GET /js/magnific-popup-options.js HTTP/1.1
-
-2022-12-08 15:11:23.968899 [debug]: xinhong Host: 192.168.31.138:1316
-
-2022-12-08 15:11:23.968991 [debug]: xinhong User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36
-
-2022-12-08 15:11:23.969089 [debug]: xinhong Accept: */*
-
-2022-12-08 15:11:23.969145 [debug]: xinhong Accept-Encoding: gzip, deflate
-
-2022-12-08 15:11:23.969211 [debug]: xinhong Accept-Language: zh-CN,zh;q=0.9
-
-2022-12-08 15:11:23.969272 [debug]: xinhong Referer: http://192.168.31.138:1316/
-
-2022-12-08 15:11:23.969357 [debug]: xinhong 
-
-2022-12-08 15:11:23.969398 [debug]: [GET], [/js/magnific-popup-options.js], [1.1]
-
-2022-12-08 15:11:23.969402 [debug]: /js/magnific-popup-options.js
-
-2022-12-08 15:11:23.969419 [debug]: file path /home/sinhung/rtsp_test/bin/resources//js/magnific-popup-options.js
-
-2022-12-08 15:11:23.969428 [debug]: filesize:1069, 2  to 1161
-
-2022-12-08 15:11:23.969615 [info] : Client[7](192.168.31.237:36078) in, userCount:5
-
-2022-12-08 15:11:23.969682 [info] : Client[7] in!
-
-2022-12-08 15:11:23.969993 [info] : Client[10] quit!
-
-2022-12-08 15:11:23.970099 [info] : Client[10](192.168.31.237:35566) quit, UserCount:4
-
-2022-12-08 15:11:23.970126 [info] : Client[9] quit!
-
-2022-12-08 15:11:23.970179 [info] : Client[9](192.168.31.237:35310) quit, UserCount:3
-
-2022-12-08 15:11:23.970424 [info] : Client[9](192.168.31.237:37102) in, userCount:4
-
-2022-12-08 15:11:23.970467 [info] : Client[9] in!
-
-xinhong matching result:1
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-2022-12-08 15:11:23.970690 [debug]: xinhong GET /js/custom.js HTTP/1.1
-
-2022-12-08 15:11:23.970802 [debug]: xinhong User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36
-
-2022-12-08 15:11:23.971142 [debug]: xinhong Host: 192.168.31.138:1316
-
-2022-12-08 15:11:23.971260 [debug]: xinhong User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36
-
-2022-12-08 15:11:23.971295 [debug]: xinhong Accept: */*
-
-2022-12-08 15:11:23.971324 [debug]: xinhong Accept: */*
-
-2022-12-08 15:11:23.971344 [debug]: xinhong Accept-Encoding: gzip, deflate
-
-2022-12-08 15:11:23.971371 [debug]: xinhong Accept-Encoding: gzip, deflate
-
-2022-12-08 15:11:23.971394 [debug]: xinhong Accept-Language: zh-CN,zh;q=0.9
-
-2022-12-08 15:11:23.971397 [debug]: xinhong Accept-Language: zh-CN,zh;q=0.9
-
-2022-12-08 15:11:23.971621 [debug]: xinhong Referer: http://192.168.31.138:1316/
-
-xinhong matching result:0
-xinhong matching result:0
-2022-12-08 15:11:23.971860 [debug]: xinhong 
-
-2022-12-08 15:11:23.971948 [debug]: [GET], [/js/smoothscroll.js], [1.1]
-
-2022-12-08 15:11:23.971952 [debug]: /js/smoothscroll.js
-
-2022-12-08 15:11:23.971983 [debug]: file path /home/sinhung/rtsp_test/bin/resources//js/smoothscroll.js
-
-2022-12-08 15:11:23.972017 [debug]: filesize:4474, 2  to 4566
-
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:1
-2022-12-08 15:11:23.972050 [debug]: xinhong Referer: http://192.168.31.138:1316/
-
-2022-12-08 15:11:23.972073 [debug]: xinhong Referer: http://192.168.31.138:1316/
-
-2022-12-08 15:11:23.972107 [debug]: xinhong 
-
-2022-12-08 15:11:23.972130 [debug]: [GET], [/js/jquery.magnific-popup.min.js], [1.1]
-
-2022-12-08 15:11:23.972132 [debug]: /js/jquery.magnific-popup.min.js
-
-2022-12-08 15:11:23.972136 [debug]: xinhong 
-
-2022-12-08 15:11:23.972138 [debug]: file path /home/sinhung/rtsp_test/bin/resources//js/jquery.magnific-popup.min.js
-
-2022-12-08 15:11:23.972186 [debug]: [GET], [/js/custom.js], [1.1]
-
-2022-12-08 15:11:23.972202 [debug]: /js/custom.js
-
-2022-12-08 15:11:23.972210 [debug]: file path /home/sinhung/rtsp_test/bin/resources//js/custom.js
-
-2022-12-08 15:11:23.972188 [debug]: filesize:20932, 2  to 21025
-
-2022-12-08 15:11:23.972608 [debug]: xinhong GET /images/profile-image.jpg HTTP/1.1
-
-2022-12-08 15:11:23.973102 [info] : Client[6] quit!
-
-2022-12-08 15:11:23.973326 [info] : Client[6](192.168.31.237:34542) quit, UserCount:3
-
-2022-12-08 15:11:23.973336 [info] : Client[8] quit!
-
-2022-12-08 15:11:23.973594 [info] : Client[8](192.168.31.237:34286) quit, UserCount:2
-
-xinhong matching result:0
-2022-12-08 15:11:23.973673 [debug]: filesize:1047, 2  to 1139
-
-2022-12-08 15:11:23.973931 [info] : Client[7] quit!
-
-xinhong matching result:2022-12-08 15:11:23.974295 [info] : Client[7](192.168.31.237:36078) quit, UserCount:1
-
-2022-12-08 15:11:23.973717 [debug]: xinhong Host: 192.168.31.138:1316
-
-0
-2022-12-08 15:11:23.974581 [debug]: xinhong User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36
-
-xinhong matching result:0
-2022-12-08 15:11:23.974671 [debug]: xinhong Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
-
-xinhong matching result:0
-xinhong matching result:0
-2022-12-08 15:11:23.974745 [debug]: xinhong Accept-Encoding: gzip, deflate
-
-2022-12-08 15:11:23.974798 [debug]: xinhong Accept-Language: zh-CN,zh;q=0.9
-
-xinhong matching result:0
-xinhong matching result:0
-2022-12-08 15:11:23.974872 [debug]: xinhong Referer: http://192.168.31.138:1316/
-
-2022-12-08 15:11:23.974904 [debug]: xinhong 
-
-2022-12-08 15:11:23.974928 [debug]: [GET], [/images/profile-image.jpg], [1.1]
-
-2022-12-08 15:11:23.974949 [debug]: /images/profile-image.jpg
-
-2022-12-08 15:11:23.974959 [debug]: file path /home/sinhung/rtsp_test/bin/resources//images/profile-image.jpg
-
-2022-12-08 15:11:23.974970 [debug]: filesize:47176, 2  to 47263
-
-2022-12-08 15:11:23.976235 [info] : Client[9] quit!
-
-2022-12-08 15:11:23.976523 [info] : Client[9](192.168.31.237:37102) quit, UserCount:0
-
-2022-12-08 15:11:23.992266 [info] : Client[6](192.168.31.237:37614) in, userCount:1
-
-2022-12-08 15:11:23.992518 [info] : Client[6] in!
-
-xinhong matching result:1
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-xinhong matching result:0
-2022-12-08 15:11:23.992706 [debug]: xinhong GET /images/favicon.ico HTTP/1.1
-
-2022-12-08 15:11:23.992842 [debug]: xinhong Host: 192.168.31.138:1316
-
-2022-12-08 15:11:23.992874 [debug]: xinhong User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36
-
-2022-12-08 15:11:23.992903 [debug]: xinhong Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
-
-2022-12-08 15:11:23.992928 [debug]: xinhong Accept-Encoding: gzip, deflate
-
-2022-12-08 15:11:23.992951 [debug]: xinhong Accept-Language: zh-CN,zh;q=0.9
-
-2022-12-08 15:11:23.992975 [debug]: xinhong Referer: http://192.168.31.138:1316/
-
-2022-12-08 15:11:23.992999 [debug]: xinhong 
-
-2022-12-08 15:11:23.993020 [debug]: [GET], [/images/favicon.ico], [1.1]
-
-2022-12-08 15:11:23.993021 [debug]: /images/favicon.ico
-
-2022-12-08 15:11:23.993035 [debug]: file path /home/sinhung/rtsp_test/bin/resources//images/favicon.ico
-
-2022-12-08 15:11:23.993058 [debug]: filesize:60990, 2  to 61077
-
-2022-12-08 15:11:23.993406 [info] : Client[6] quit!
-
-2022-12-08 15:11:23.993442 [info] : Client[6](192.168.31.237:37614) quit, UserCount:0
+2022-12-10 14:46:06.761553 [info] : Client[6] quit!
 
