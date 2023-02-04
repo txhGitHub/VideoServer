@@ -14,6 +14,8 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <ifaddrs.h>
+#include <net/if.h>
 
 #include "epoller.h"
 #include "../log/log.h"
@@ -22,6 +24,7 @@
 #include "../pool/threadpool.h"
 #include "../pool/sqlconnRAII.h"
 #include "../http/serverconn.h"
+#include "../utils/groupsocketutils.h"
 
 class WebServer {
 public:
@@ -50,6 +53,8 @@ private:
     void OnRead_(ServerConn* client);
     void OnWrite_(ServerConn* client);
     void OnProcess(ServerConn* client);
+
+    void GetIpAddr();
 
     static const int MAX_FD = 65536;
 

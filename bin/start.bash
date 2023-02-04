@@ -1,5 +1,5 @@
 cd ../build
-make
+make -j8
 cd ../bin
 # gdb ./server
 ./server

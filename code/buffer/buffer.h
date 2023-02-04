@@ -51,8 +51,8 @@ private:
     void MakeSpace_(size_t len);
 
     std::vector<char> buffer_;
-    std::atomic<std::size_t> readPos_;
-    std::atomic<std::size_t> writePos_;
+    std::atomic<std::size_t> readPos_; //表示读取buffer，当前已读的位置
+    std::atomic<std::size_t> writePos_; //表示向buffer写入数据，当前已经写入的位置
 };
 
 #endif //BUFFER_H

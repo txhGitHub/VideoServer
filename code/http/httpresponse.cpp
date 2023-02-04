@@ -160,7 +160,7 @@ string HttpResponse::GetFileType_() {
     return "text/plain";
 }
 
-void HttpResponse::ErrorContent(Buffer& buff, string message) 
+void HttpResponse::ErrorContent(Buffer& buff, string message)
 {
     string body;
     string status;

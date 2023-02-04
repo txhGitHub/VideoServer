@@ -33,6 +33,7 @@ void ServerConn::init(int fd, const sockaddr_in& addr) {
     writeBuff_.RetrieveAll();
     readBuff_.RetrieveAll();
     isClose_ = false;
+    m_rtspResponse.init(GetIP());
     LOG_INFO("Client[%d](%s:%d) in, userCount:%d", fd_, GetIP(), GetPort(), (int)userCount);
 }
 
@@ -103,18 +104,15 @@ bool ServerConn::process() {
     if(readBuff_.ReadableBytes() <= 0) {
         return false;
     }
-
     //使用正则表达式，匹配协议类型，根据不同的协议处理处理不同的请求
     const char CRLF[] = "\r\n";
     smatch results;
-    regex r("HTTP|RTSP");  
+    regex r("HTTP|RTSP");
     const char* lineEnd = search(readBuff_.Peek(), readBuff_.BeginWriteConst(), CRLF, CRLF + 2);
     std::string line(readBuff_.Peek(), lineEnd);
-
     if(regex_search(line, results, r))
     {
         m_protocolType = g_protocolMatchTable[results.str()];
-        LOG_DEBUG("m_protocolType:%d", m_protocolType);
     }
 
     // matchProtocol();
@@ -144,26 +142,25 @@ void ServerConn::matchProtocol()
 bool ServerConn::processHttpRequest()
 {
     request_.Init();
-        if(request_.parse(readBuff_)) {
-            LOG_DEBUG("%s", request_.path().c_str());
-            response_.Init(srcDir, request_.path(), request_.IsKeepAlive(), 200);
-        } else {
-            response_.Init(srcDir, request_.path(), false, 400);
-        }
+    if(request_.parse(readBuff_)) {
+        LOG_DEBUG("%s", request_.path().c_str());
+        response_.Init(srcDir, request_.path(), request_.IsKeepAlive(), 200);
+    } else {
+        response_.Init(srcDir, request_.path(), false, 400);
+    } 
 
-        response_.MakeResponse(writeBuff_);
-        /* 响应头 */
-        iov_[0].iov_base = const_cast<char*>(writeBuff_.Peek());
-        iov_[0].iov_len = writeBuff_.ReadableBytes();
-        iovCnt_ = 1;
+    response_.MakeResponse(writeBuff_);
+    /* 响应头 */
+    iov_[0].iov_base = const_cast<char*>(writeBuff_.Peek());
+    iov_[0].iov_len = writeBuff_.ReadableBytes();
+    iovCnt_ = 1;
 
-        /* 文件 */
-        if(response_.FileLen() > 0  && response_.File()) {
-            iov_[1].iov_base = response_.File();
-            iov_[1].iov_len = response_.FileLen();
-            iovCnt_ = 2;
-        }
-    
+    /* 文件 */
+    if(response_.FileLen() > 0  && response_.File()) {
+        iov_[1].iov_base = response_.File();
+        iov_[1].iov_len = response_.FileLen();
+        iovCnt_ = 2;
+    }
     return true;
 }
 
@@ -171,11 +168,17 @@ bool ServerConn::processRtspRequest(std::string line)
 {
     // m_rtspReques
     m_rtspRequest.init();
-    if(!m_rtspRequest.parse(readBuff_, line))
-    {
+    if(m_rtspRequest.parse(readBuff_, line)) {
+        m_rtspResponse.resetStr();
+        m_rtspRequest.setResponePar(std::bind(&RtspReponse::makeResponeStr, &m_rtspResponse, std::placeholders::_1,
+                        std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5, std::placeholders::_6));
+        m_rtspResponse.fillResponseBuffer(writeBuff_);
+        iov_[0].iov_base = const_cast<char*>(writeBuff_.Peek());
+        iov_[0].iov_len = writeBuff_.ReadableBytes();
+        iovCnt_ = 1;
+    } else {
+        m_rtspResponse.resetStr();
         LOG_DEBUG("parsing failed");
     }
-
-
     return true;
 }

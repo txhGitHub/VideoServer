@@ -19,6 +19,7 @@
 #include "httprequest.h"
 #include "httpresponse.h"
 #include "../rtsp/rtsprequest.h"
+#include "../rtsp/rtspresponse.h"
 #include "../timer/codetimer.h"
 
 enum PROTOCOL{
@@ -52,8 +53,8 @@ public:
     bool processHttpRequest();
     bool processRtspRequest(std::string line);
 
-    int ToWriteBytes() { 
-        return iov_[0].iov_len + iov_[1].iov_len; 
+    int ToWriteBytes() {
+        return iovCnt_ > 1 ? iov_[0].iov_len + iov_[1].iov_len  : iov_[0].iov_len;
     }
 
     bool IsKeepAlive() const {
@@ -74,7 +75,6 @@ private:
     int fd_;
     struct  sockaddr_in addr_;
     
-
     bool isClose_;
     
     int iovCnt_;
@@ -87,6 +87,7 @@ private:
     HttpResponse response_;
     PROTOCOL m_protocolType;
     RtspRequest m_rtspRequest;
+    RtspReponse m_rtspResponse;
 };
 
 

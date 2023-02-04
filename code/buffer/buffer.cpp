@@ -7,9 +7,12 @@
 
 Buffer::Buffer(int initBuffSize) : buffer_(initBuffSize), readPos_(0), writePos_(0) {}
 
+//还剩多少字节可以读取
 size_t Buffer::ReadableBytes() const {
     return writePos_ - readPos_;
 }
+
+//buffer大小减去已写入的位置，表示还剩多少空间可以写入数据
 size_t Buffer::WritableBytes() const {
     return buffer_.size() - writePos_;
 }
@@ -32,6 +35,7 @@ void Buffer::RetrieveUntil(const char* end) {
     Retrieve(end - Peek());
 }
 
+//将buffer数据置为0，读位置和写位置置为开始的位置
 void Buffer::RetrieveAll() {
     bzero(&buffer_[0], buffer_.size());
     readPos_ = 0;
@@ -108,9 +112,10 @@ ssize_t Buffer::ReadFd(int fd, int* saveErrno) {
     return len;
 }
 
+//向文件写入数据，并且移动已读标识位置
 ssize_t Buffer::WriteFd(int fd, int* saveErrno) {
     size_t readSize = ReadableBytes();
-    ssize_t len = write(fd, Peek(), readSize);
+    ssize_t len = write(fd, Peek(), readSize); //write函数返回值表示成功写入的字节数
     if(len < 0) {
         *saveErrno = errno;
         return len;
@@ -119,6 +124,7 @@ ssize_t Buffer::WriteFd(int fd, int* saveErrno) {
     return len;
 }
 
+//返回buffer开始的位置
 char* Buffer::BeginPtr_() {
     return &*buffer_.begin();
 }

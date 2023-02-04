@@ -16,6 +16,8 @@
 #include <sys/stat.h>         //mkdir
 #include "blockqueue.h"
 #include "../buffer/buffer.h"
+#include <sys/types.h>
+#include <sys/syscall.h>
 
 class Log {
 public:
@@ -64,6 +66,7 @@ private:
     std::mutex mtx_;
 };
 
+
 #define LOG_BASE(level, format, ...) \
     do {\
         Log* log = Log::Instance();\
@@ -73,9 +76,15 @@ private:
         }\
     } while(0);
 
-#define LOG_DEBUG(format, ...) do {LOG_BASE(0, format, ##__VA_ARGS__)} while(0);
-#define LOG_INFO(format, ...) do {LOG_BASE(1, format, ##__VA_ARGS__)} while(0);
-#define LOG_WARN(format, ...) do {LOG_BASE(2, format, ##__VA_ARGS__)} while(0);
-#define LOG_ERROR(format, ...) do {LOG_BASE(3, format, ##__VA_ARGS__)} while(0);
+// gettid() 位linux自带函数,wsl没有,使用syscall(SYS_gettid)替代
+
+#define LOG_DEBUG(format, ...) do {LOG_BASE(0, "%d %d %s:%d, %s() " format "\n", getpid(), syscall(SYS_gettid), \
+                                __FILE__, __LINE__, __FUNCTION__, ##__VA_ARGS__)} while(0);
+#define LOG_INFO(format, ...) do {LOG_BASE(1, "%d %d %s:%d, %s() " format "\n", getpid(), syscall(SYS_gettid),  \
+                                __FILE__, __LINE__, __FUNCTION__, ##__VA_ARGS__)} while(0);
+#define LOG_WARN(format, ...) do {LOG_BASE(2, "%d %d %s:%d, %s() " format "\n",  getpid(), syscall(SYS_gettid), \
+                                __FILE__, __LINE__, __FUNCTION__, ##__VA_ARGS__)} while(0);
+#define LOG_ERROR(format, ...) do {LOG_BASE(3, "%d %d %s:%d, %s()" format "\n", getpid(), syscall(SYS_gettid),  \
+                                __FILE__, __LINE__, __FUNCTION__,##__VA_ARGS__)} while(0);
 
 #endif //LOG_H

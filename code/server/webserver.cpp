@@ -146,6 +146,7 @@ void WebServer::DealListen_() {
     //不断监听，接收到请求后返回的是新的socket链接
     do {
         int fd = accept(listenFd_, (struct sockaddr *)&addr, &len);
+        char IPv4[16]{0};
         if(fd <= 0) { return;}
         else if(ServerConn::userCount >= MAX_FD) {
             SendError_(fd, "Server busy!");
@@ -187,7 +188,7 @@ void WebServer::OnRead_(ServerConn* client) {
 
 void WebServer::OnProcess(ServerConn* client) {
     if(client->process()) {
-        epoller_->ModFd(client->GetFd(), connEvent_ | EPOLLOUT);
+        epoller_->ModFd(client->GetFd(), connEvent_ | EPOLLOUT); //重新触发EPOLLOUT，
     } else {
         epoller_->ModFd(client->GetFd(), connEvent_ | EPOLLIN);
     }
@@ -198,12 +199,15 @@ void WebServer::OnWrite_(ServerConn* client) {
     int ret = -1;
     int writeErrno = 0;
     ret = client->write(&writeErrno);
+    //### 检测写入字节数异常，导致无法读取数据
     if(client->ToWriteBytes() == 0) {
+        // ###
         /* 传输完成 */
-        if(client->IsKeepAlive()) {
-            OnProcess(client);
-            return;
-        }
+        // if(client->IsKeepAlive()) {
+        //     OnProcess(client);
+        //     return;
+        // }
+        OnProcess(client);
     }
     else if(ret < 0) {
         if(writeErrno == EAGAIN) {
@@ -212,7 +216,7 @@ void WebServer::OnWrite_(ServerConn* client) {
             return;
         }
     }
-    CloseConn_(client);
+    // CloseConn_(client);
 }
 
 /* Create listenFd */
@@ -227,6 +231,12 @@ bool WebServer::InitSocket_() {
     addr.sin_addr.s_addr = htonl(INADDR_ANY);
     addr.sin_port = htons(port_);
     struct linger optLinger = { 0 };
+    // GetIpAddr();
+
+    // char buff[20] = {0};
+    // inet_ntop(AF_INET, &addr.sin_addr.s_addr, buff , sizeof(buff));
+    // printf("xinhong ------------------------:%s\n",  buff);
+
     /*
     1. l_onoff = 0; l_linger忽略
     close()立刻返回，底层会将未发送完的数据发送完成后再释放资源，即优雅退出。
@@ -297,4 +307,35 @@ int WebServer::SetFdNonblock(int fd) {
     return fcntl(fd, F_SETFL, fcntl(fd, F_GETFD, 0) | O_NONBLOCK);
 }
 
+//+++
+void  WebServer::GetIpAddr()
+{
+    struct sockaddr_storage foundIPv4Address;
+    GroupSocketUtils::nullAddress(AF_INET, foundIPv4Address);
+    struct sockaddr_storage foundIPv6Address;
+    GroupSocketUtils::nullAddress(AF_INET6, foundIPv6Address);
+    bool getifaddrsWorks = false;
+    struct ifaddrs* ifap;
+
+    //IFF_UP 表示网卡已经做好了准备，但是并意味着网线已经连接
+    // IFF_LOOPBACK
+
+    if (getifaddrs(&ifap) == 0) {
+        for (struct ifaddrs* p = ifap; p != NULL; p = p->ifa_next) {
+            // Ignore an interface if it's not up, or is a loopback interface:
+            if ((p->ifa_flags&IFF_UP) == 0 || (p->ifa_flags&IFF_LOOPBACK) != 0) continue;
+
+            // Also ignore the interface if the address is considered 'bad' for us:
+            if (p->ifa_addr == NULL || GroupSocketUtils::isBadAddressForUs(*p->ifa_addr)) continue;
+
+                  // We take the first IPv4 and first IPv6 addresses:
+            if (p->ifa_addr->sa_family == AF_INET && GroupSocketUtils::addressIsNull(foundIPv4Address)) {
+                GroupSocketUtils::copyAddress(foundIPv4Address, p->ifa_addr);
+                getifaddrsWorks = true;
+            } else if (p->ifa_addr->sa_family == AF_INET6 && GroupSocketUtils::addressIsNull(foundIPv6Address)) {
+                GroupSocketUtils::copyAddress(foundIPv6Address, p->ifa_addr);
+            }
+        }
+    }
+}
 
